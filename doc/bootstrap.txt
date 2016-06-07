@@ -1,0 +1,22 @@
+模态框的使用：
+	a.navbar-link(href="#signupModal", data-toggle="modal") 注册 //data-toggle="modal" 指的是打开模态框的意思 href就是模态框的id
+
+	#signupModal.modal.fade  //fade 指的是动画效果
+		.modal-dialog
+			.modal-content
+				.modal-header 
+					h3.modal-title 注册
+				.modal-body
+					p.form-tip
+					.form-group
+						label(for="signupName") 用户名
+						input#signupName.form-control(type="text")
+					.form-group
+						label(for="signupPassword") 密码
+						input#signupPassword.form-control(type="password")
+				.modal-footer
+					button.btn.btn-default(type="button", data-dismiss="modal") 关闭 // data-dismiss="modal" 关闭按钮属性
+					button.btn.btn-primary.btn-signup(type="submit") 提交
+
+分页插件的使用：
+bootstrap-paginator可支持bootstrap2和bootstrap3。默认的下载包中支持2，需要手动修改才能支持bootstrap3。具体方法：找到bootstrap-paginator的js文件，修改bootstrapMajorVersion:3即可

@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+	div.content.container(style = "margin-top : 20px")
+		div.row
+			div.col-md-8
+				div#container-left
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title 课程详细
+						div.panel-body
+							div.media
+								div.media-left
+									img.media-object(src = '/images/alt.PNG')
+								div.media-body
+									a(href = '#')
+										h4 #{detail.course_tittle}
+									div
+										button.btn.btn-warning(type = 'button',style = 'margin:5px') &nbsp;&nbsp;加入收藏&nbsp;&nbsp;
+										button.btn.btn-success(type = 'button',style = 'margin:5px') &nbsp;&nbsp;立即联系&nbsp;&nbsp;
+							div <p><strong>地址:</strong>#{detail.course_address}</p>
+							div <p><strong>课程等级:</strong>#{detail.course_class}</p>
+							div <p><strong>课程描述:</strong>#{detail.course_description}</p>
+			div.col-md-4
+				div#container-right
+					if hotTeacher
+						each item in hotTeacher
+							div.list-group-item
+								div
+									a(href = "#") <h4 class="list-group-item-heading">#{item.name}</h4>
+								div <p><strong>City:</strong>#{item.city}</p>
+								div <p><strong>Class:</strong>#{item.class}</p>
+
+
+

@@ -1,0 +1,54 @@
+nav.navbar-inverse
+	div.container
+		div.navbar-header
+			button.navbar-toggle.collapsed(type='button',data-toggle="collapse",data-target="#bs-example-navbar-collapse-1",aria-expanded="false")
+				span.sr-only Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.navbar-brand(href='/') 首页
+		div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+			ul.nav.navbar-nav.navbar-right
+				if user
+					li 
+						a(href='users/#{user._id}') 欢迎您，#{user.user_name}
+					li
+						a(href="/users/logout") 登出
+				else
+					li
+						a(href="#login_box", data-toggle="modal") 登录
+					li
+						a(href="#register_box", data-toggle="modal") 注册
+div#login_box.modal.fade
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				h3.modal-title 登录
+			div.modal-body
+				p.form-tip-signin.alert-danger
+				form#signin
+					div.form-group
+						input#user_email.form-control(type="email",name="user_email",placeholder="邮箱/手机号码/用户名")
+					div.form-group
+						input#user_password.form-control(type="password",name="user_password",placeholder="密码")
+					input#signinBtn.btn.btn-success.btn-block(type="submit",value="登录")
+					p.help-block.font-size1 版权所有。
+div#register_box.modal.fade
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				h3.modal-title 注册
+			div.modal-body
+				p.form-tip-signup.alert-danger
+				form#signup
+					div.form-group
+						input#signup_user_email.form-control(type="email",name="user_email",placeholder="邮箱")
+					div.form-group
+						input#signup_user_password.form-control(type="password",name="user_password",placeholder="密码")
+					div.form-group
+						input#signup_user_name.form-control(type="text",name="user_name",placeholder="昵称")
+					div.form-group
+						input#signup_phone_number.form-control(type="text",name="phone_number",placeholder="手机号码")
+					input#signupBtn.btn.btn-success.btn-block(type="submit",value="注册")
+					p.help-block.font-size1 版权所有。
+

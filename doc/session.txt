@@ -1,0 +1,26 @@
+在使用session保存用户的登录信息的时候
+（1） npm添加依赖包：express-session connect-mongo（如果想持久化session）
+（2） 引用依赖
+		var session = require('express-session');
+		var MongoStore = require('connect-mongo')(session);
+（3） 在app.js中添加如下代码
+		app.use(session({
+			name:"test",//这里的name值得是cookie的name，默认cookie的name是：connect.sid
+			cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
+			resave:false, 
+			saveUninitialized: true, 
+			secret: 'test',
+			store: new MongoStore({
+				url: 'mongodb://localhost/test',
+				collection: 'sessions'
+			})
+		}));
+
+		//session 预处理
+		app.use(function (req, res, next) {
+			//保存用户的登录状态到全局
+			app.locals.user = req.session.user;
+			next();
+		});
+(4) 在用户登录成功后的route中添加如下代码将用户信息保存在session中即可
+        req.session.user = user;

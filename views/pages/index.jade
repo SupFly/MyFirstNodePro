@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+	div.content
+		div.jumbotron
+			div.container
+				h1 Hello, everybody!
+				p you can find all you want!
+				p
+					a.btn.btn-primary.btn-lg(href="course/list",role="button") 更多内容
+
+		div.container
+			div.page-header
+				h3 热门教师
+			div.row
+				if user
+					each items in user
+						div.col-sm-6.col-md-3
+							div.thumbnail
+								img(src='/images/alt.PNG')
+								div.caption
+									h3 #{items.user_name}
+									p #{items.user_email}
+									p
+										a.btn.btn-primary(href='#',role="button") 详情
+			div.page-header
+				h3 热门课程
+			div.row
+				if course
+					each items in course
+						div.col-sm-6.col-md-3
+							div.thumbnail
+								img(src='/images/alt.PNG')
+								div.caption
+									h3 #{items.course_tittle}
+									p #{items.course_description}
+									p
+										a.btn.btn-primary(href='#',role="button") 详情
+

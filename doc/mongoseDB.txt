@@ -1,0 +1,12 @@
+全文索引
+创建：
+	>db.courses.ensureIndex({course_tittle:"text",course_class:"text",course_description:"text",})
+查询：
+	course.find({$text: {$search: req.query.keyword})
+
+
+mongoDB 查询：
+db.person.find({},{_id:0,name:1})
+	.limit(5) //查询的条数
+	.skip(5)//指定数据的跨度
+	.sort('-create_date')//排序数据(-是降序的意思)

@@ -1,0 +1,32 @@
+用户表:sys_user：
+_id:String 
+user_name: String
+user_email: Stirng
+user_phone: String
+user_password: String
+create_date: Date
+update_date: Date
+is_teacher: String
+status:String
+
+
+课程信息表:course:
+_id:String
+course_address:String
+course_class:String
+course_description: Strng
+course_tittle:String
+teacher_id:String
+create_date: Date
+update_date: Date
+
+学生信息表:student:
+_id:String
+student_address:String
+student_class:String
+student_description: Strng
+student_tittle:String
+student_id:String
+create_date: Date
+update_date: Date
+

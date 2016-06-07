@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+	div.content.container(style = "margin-top : 20px")
+		div.row
+			div.col-md-8
+				div#container-left
+					form#courseInput(method='post',action='/course/createCourse')
+						div.form-group
+							label(for="course_tittle") 课程标题
+							input#course_address.form-control(type="text",name="course_tittle")
+						div.form-group
+							label(for="course_class") 课程类别
+							input#course_class.form-control(type="text",name="course_class")
+						div.form-group
+							label(for="course_address") 课程地址
+							input#signup_user_name.form-control(type="text",name="course_address")
+						div.form-group
+							label(for="course_description") 课程描述
+							textarea#signup_user_name.form-control(type="text",name="course_description",form="courseInput")
+						if user
+							div.form-group
+								label(for="teacher_id") 创建人
+								input#teacher_id.form-control(type="hiden",name="teacher_id",value="#{user.user_name}")
+						input.btn.btn-success.btn-block(type="submit",value="创建")
+					p.help-block.font-size1 版权所有。
+			div.col-md-4
+				div#container-right
+					if(hotTeacher)
+						each item in hotTeacher
+							div.list-group-item
+								div
+									a(href = "#") <h4 class="list-group-item-heading">#{item.name}</h4>
+								div <p><strong>City:</strong>#{item.city}</p>
+								div <p><strong>Class:</strong>#{item.class}</p>
+
+

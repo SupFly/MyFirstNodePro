@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+	div.content.container(style = "margin-top : 20px")
+		div.row
+			div.col-md-8
+				div#container-left
+					div.panel.panel-default
+						div.panel-heading
+							h3.panel-title 用户详细
+						div.panel-body
+							div.media
+								div.media-left
+									img.media-object(src = '/images/alt.PNG')
+								div.media-body
+									div
+										a.btn.btn-success(href='/course/create',type = 'button',style = 'margin:5px') &nbsp;&nbsp;创建课程&nbsp;&nbsp;
+							div <p><strong>邮箱:</strong>#{user.user_email}</p>
+							div <p><strong>用户名:</strong>#{user.user_name}</p>
+							div <p><strong>电话:</strong>#{user.phone_number}</p>
+			div.col-md-4
+				div#container-right
+					if hotTeacher
+						each item in hotTeacher
+							div.list-group-item
+								div
+									a(href = "#") <h4 class="list-group-item-heading">#{item.name}</h4>
+								div <p><strong>City:</strong>#{item.city}</p>
+								div <p><strong>Class:</strong>#{item.class}</p>
+
+
+

@@ -1,0 +1,80 @@
+extends ../layout		
+block content
+	div.contant
+		div.masthead.search_panel
+			div.container
+				form#serachForm.form-inline.search_form(method='get',action='/course/list')
+					div.row
+						div.col-md-3
+						div.col-md-6						
+							if keyword
+								input#keyword.form-control(type='text',style='width:80%',name='keyword',value='#{keyword}',placeholder='请输入想搜索的内容')
+							else 
+								input#keyword.form-control(type='text',style='width:80%',name='keyword',placeholder='请输入想搜索的内容')			
+							input.btn.btn-default(type='submit',style='width:20%' value='搜索')
+		div#category_container.container.content
+			div.row
+				div.col-md-8
+					ul#Tab.nav.nav-tabs
+						li.active
+							a(href='#course',data-toggle='tab') 课程
+						li
+							a(href='#teacher',data-toggle='tab') 教师
+						li
+							a(href='#student',data-toggle='tab') 学生
+					div#myTabContent.tab-content
+						div#course.tab-pane.fade.in.active
+							div.list-group(style='margin-top:5px')
+								if courseList
+									each item in courseList
+										div.list-group-item_1
+											div
+												a(href='/course/#{item.id}')
+													h4.list-group-item-heading #{item.course_tittle}
+											div
+												p <strong>Address:</strong>#{item.course_address}
+											div
+												p <strong>Class:</strong>#{item.course_class}
+											div
+												p <strong>Description:</strong>#{item.course_description}
+										hr
+							ul.pagination#pagination(pageCount='#{page.pageCount}',pageNum='#{page.num}',pageSize='#{page.size}',pageLimit='#{page.limit}',numberOfPages='#{page.numberOf}')
+						div#teacher.tab-pane.fade
+							div.list-group
+								if courseList
+									each item in courseList
+										div.list-group-item_1
+											div
+												a(href='/course/#{item.id}')
+													h4.list-group-item-heading #{item.course_tittle}
+											div
+												p <strong>Address:</strong>#{item.course_address}
+											div
+												p <strong>Class:</strong>#{item.course_class}
+											div
+												p <strong>Description:</strong>#{item.course_description}
+										hr
+							ul.pagination#pagination(pageCount='#{page.pageCount}',pageNum='#{page.num}',pageSize='#{page.size}',pageLimit='#{page.limit}',numberOfPages='#{page.numberOf}')
+						div#student.tab-pane.fade
+							div.list-group
+								if courseList
+									each item in courseList
+										div.list-group-item_1
+											div
+												a(href='/course/#{item.id}')
+													h4.list-group-item-heading #{item.course_tittle}
+											div
+												p <strong>Address:</strong>#{item.course_address}
+											div
+												p <strong>Class:</strong>#{item.course_class}
+											div
+												p <strong>Description:</strong>#{item.course_description}
+										hr
+							ul.pagination#pagination(pageCount='#{page.pageCount}',pageNum='#{page.num}',pageSize='#{page.size}',pageLimit='#{page.limit}',numberOfPages='#{page.numberOf}')
+				div.col-md-4
+					div: p 热门搜索
+					div.list-group
+						if hotsearch
+							each item in hotsearch
+								div
+									a(href='#') #{item.words}

@@ -1,0 +1,12 @@
+
+--registry=http://r.cnpmjs.org
+
+打开工作目录：cd d:/workspace4Node/MyFirstNodePro
+启动node服务器：node ./bin/www
+
+
+express获取参数有三种方法：官网实例：
+
+(req.params), ex: /user/:id
+(req.query), ex: ?id=12
+(req.body), ex: id=
